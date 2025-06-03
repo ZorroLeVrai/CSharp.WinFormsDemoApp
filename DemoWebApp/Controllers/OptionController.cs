@@ -11,7 +11,7 @@ public class OptionController : ControllerBase
 {
     // GET: api/<OptionController>
     [HttpGet]
-    public async Task<List<string>> Get()
+    public async Task<List<string>> GetAsync()
     {
         var optionLoader = new OptionLoader("Voiture", 10, 6000);
         var data = await optionLoader.GetOptionsAsync();
@@ -20,7 +20,7 @@ public class OptionController : ControllerBase
 
     // GET api/<OptionController>/5
     [HttpGet("{id}")]
-    public async Task<List<string>> Get(int id)
+    public async Task<List<string>> GetAsync(int id)
     {
         var optionLoader = new OptionLoader("Voiture", 10, id * 1000);
         var data = await optionLoader.GetOptionsAsync();
