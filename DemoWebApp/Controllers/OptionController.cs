@@ -14,7 +14,7 @@ public class OptionController : ControllerBase
     public async Task<List<string>> GetAsync()
     {
         var optionLoader = new OptionLoader("Voiture", 10, 6000);
-        var data = await optionLoader.GetOptionsAsync();
+        var data = await optionLoader.GetOptionsAsync().ConfigureAwait(false);
         return data.ToList();
     }
 
@@ -23,7 +23,7 @@ public class OptionController : ControllerBase
     public async Task<List<string>> GetAsync(int id)
     {
         var optionLoader = new OptionLoader("Voiture", 10, id * 1000);
-        var data = await optionLoader.GetOptionsAsync();
+        var data = await optionLoader.GetOptionsAsync().ConfigureAwait(false);
         return data.ToList();
     }
 }

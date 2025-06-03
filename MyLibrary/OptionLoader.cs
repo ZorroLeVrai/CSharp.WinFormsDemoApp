@@ -19,7 +19,7 @@ public class OptionLoader
             .Select(i => $"{_prefix} {i}")
             .ToList();
 
-        await Task.Delay(_time);
+        await Task.Delay(_time).ConfigureAwait(false);
         return options;
     }
 }
