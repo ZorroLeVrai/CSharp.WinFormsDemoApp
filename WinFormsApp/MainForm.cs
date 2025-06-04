@@ -13,10 +13,19 @@ public partial class MainForm : Form
         InitializeComponent();
     }
 
+    protected override void OnLoad(EventArgs e)
+    {
+        base.OnLoad(e);
+    }
+
     private async void Form1_Load(object sender, EventArgs e)
     {
         var optionLoader = new OptionLoader("Option", 10, 6000);
-        var optionData = await optionLoader.GetOptionsAsync();
+        //2 tâches exécutées en parallèle pour charger les options
+        var optionDataTask = optionLoader.GetOptionsAsync();
+        var task2 = Task.Delay(1000); // Simulate a delay for loading options
+        await Task.WhenAll(optionDataTask, task2);
+        var optionData = await optionDataTask;
         option1ComboBox.DataSource = optionData.ToList();
         option1ComboBox.Enabled = true;
     }
