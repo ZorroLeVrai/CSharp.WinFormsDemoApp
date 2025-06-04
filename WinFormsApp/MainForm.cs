@@ -20,7 +20,7 @@ public partial class MainForm : Form
         option1ComboBox.Enabled = true;
     }
 
-    private async void actionButton_Click(object sender, EventArgs e)
+    private async void ActionButton_Click(object sender, EventArgs e)
     {
         actionButton.Enabled = false;
         option2ComboBox.Enabled = false;
@@ -33,7 +33,7 @@ public partial class MainForm : Form
         actionButton.Enabled = true;
     }
 
-    private async void button1_Click(object sender, EventArgs e)
+    private async void Button1_Click(object sender, EventArgs e)
     {
         serverButton.Enabled = false;
         serverComboBox.Enabled = false;

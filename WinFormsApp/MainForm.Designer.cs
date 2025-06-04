@@ -93,7 +93,7 @@
             actionButton.TabIndex = 5;
             actionButton.Text = "Action";
             actionButton.UseVisualStyleBackColor = true;
-            actionButton.Click += actionButton_Click;
+            actionButton.Click += ActionButton_Click;
             // 
             // label3
             // 
@@ -132,7 +132,7 @@
             serverButton.TabIndex = 9;
             serverButton.Text = "Chargement serveur";
             serverButton.UseVisualStyleBackColor = true;
-            serverButton.Click += button1_Click;
+            serverButton.Click += Button1_Click;
             // 
             // label4
             // 
