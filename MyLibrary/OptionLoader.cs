@@ -13,13 +13,20 @@ public class OptionLoader
         _time = time;
     }
 
-    public async Task<IEnumerable<string>> GetOptionsAsync()
+    public async Task<IEnumerable<string>> GetOptionsAsync(CancellationToken? cancellationToken = null)
     {
         var options = Enumerable.Range(1, _nbElement)
             .Select(i => $"{_prefix} {i}")
             .ToList();
 
-        await Task.Delay(_time).ConfigureAwait(false);
+        if (cancellationToken.HasValue)
+        {
+            await Task.Delay(_time, cancellationToken.Value).ConfigureAwait(false);
+        }
+        else
+        {
+            await Task.Delay(_time).ConfigureAwait(false);
+        }
         return options;
     }
 }

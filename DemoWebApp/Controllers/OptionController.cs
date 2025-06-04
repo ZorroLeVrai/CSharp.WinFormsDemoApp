@@ -11,19 +11,37 @@ public class OptionController : ControllerBase
 {
     // GET: api/<OptionController>
     [HttpGet]
-    public async Task<List<string>> GetAsync()
+    public async Task<ActionResult<List<string>>> GetAsync(CancellationToken cancellationToken)
     {
         var optionLoader = new OptionLoader("Voiture", 10, 6000);
-        var data = await optionLoader.GetOptionsAsync().ConfigureAwait(false);
-        return data.ToList();
+
+        try
+        {
+            // Use the cancellation token to allow the operation to be cancelled
+            var data = await optionLoader.GetOptionsAsync(cancellationToken).ConfigureAwait(false);
+            return data.ToList();
+        }
+        catch (OperationCanceledException)
+        {
+            return StatusCode(499); // Client Closed Request (non-standard)
+        }
     }
 
     // GET api/<OptionController>/5
     [HttpGet("{id}")]
-    public async Task<List<string>> GetAsync(int id)
+    public async Task<ActionResult<List<string>>> GetAsync(int id, CancellationToken cancellationToken)
     {
         var optionLoader = new OptionLoader("Voiture", 10, id * 1000);
-        var data = await optionLoader.GetOptionsAsync().ConfigureAwait(false);
-        return data.ToList();
+
+        try
+        {
+            // Use the cancellation token to allow the operation to be cancelled
+            var data = await optionLoader.GetOptionsAsync(cancellationToken).ConfigureAwait(false);
+            return data.ToList();
+        }
+        catch (OperationCanceledException)
+        {
+            return StatusCode(499); // Client Closed Request (non-standard)
+        }
     }
 }

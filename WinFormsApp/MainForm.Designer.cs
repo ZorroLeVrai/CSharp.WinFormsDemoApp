@@ -40,6 +40,7 @@
             serverButton = new Button();
             label4 = new Label();
             serverComboBox = new ComboBox();
+            cancelButton = new Button();
             SuspendLayout();
             // 
             // label1
@@ -152,11 +153,23 @@
             serverComboBox.Size = new Size(146, 23);
             serverComboBox.TabIndex = 11;
             // 
+            // cancelButton
+            // 
+            cancelButton.Enabled = false;
+            cancelButton.Location = new Point(493, 158);
+            cancelButton.Name = "cancelButton";
+            cancelButton.Size = new Size(84, 38);
+            cancelButton.TabIndex = 12;
+            cancelButton.Text = "Cancel";
+            cancelButton.UseVisualStyleBackColor = true;
+            cancelButton.Click += CancelButton_Click;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(cancelButton);
             Controls.Add(serverComboBox);
             Controls.Add(label4);
             Controls.Add(serverButton);
@@ -190,5 +203,6 @@
         private Button serverButton;
         private Label label4;
         private ComboBox serverComboBox;
+        private Button cancelButton;
     }
 }
